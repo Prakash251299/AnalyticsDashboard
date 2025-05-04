@@ -1,3 +1,4 @@
+import 'package:analytics_dashboard/data/dummy_data.dart';
 import 'package:analytics_dashboard/themes/para_colors.dart';
 import 'package:analytics_dashboard/themes/para_sizes.dart';
 import 'package:analytics_dashboard/themes/para_text_styles.dart';
@@ -67,7 +68,8 @@ class NavigationDrawer extends StatelessWidget {
                         color: ParaColors.background,
                         child: SvgPicture.asset(
                           'assets/icons/para_icon.svg',
-                          colorFilter: ColorFilter.mode(ParaColors.paraColor, BlendMode.srcIn),
+                          colorFilter: ColorFilter.mode(
+                              ParaColors.paraColor, BlendMode.srcIn),
                           width: 24,
                           height: 24,
                           fit: BoxFit.cover,
@@ -91,10 +93,31 @@ class NavigationDrawer extends StatelessWidget {
             ),
             // const DrawerListTile(icon: Icons.more_time_outlined, title: 'Appointments'),
             // const DrawerListTile(icon: Icons.person_add_outlined, title: 'Patients'),
-            const DrawerListTile(icon: Icons.analytics_outlined, title: 'Analytics and reports'),
+            const DrawerListTile(
+                icon: Icons.analytics_outlined, title: 'Analytics and reports'),
             const Spacer(),
-            // const DrawerListTile(icon: Icons.forum_outlined, title: 'Forum'),
-            const DrawerListTile(icon: Icons.help_outline_outlined, title: 'Support'),
+
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: ParaSizes.spacing32,
+              ),
+              hoverColor: ParaColors.hoverColor,
+              leading: Icon(
+                Icons.refresh,
+                color: Colors.white,
+              ),
+              onTap: () {
+                DummyData.refreshData();
+              },
+              title: Text(
+                "Refresh",
+                style: ParaTextStyles.body2White,
+              ),
+              selected: true,
+            ),
+
+            const DrawerListTile(
+                icon: Icons.help_outline_outlined, title: 'Support'),
           ],
         ),
       ),

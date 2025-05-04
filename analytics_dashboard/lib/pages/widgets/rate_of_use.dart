@@ -98,7 +98,7 @@ class LineChartSample4 extends StatelessWidget {
     // print(month);
 
     List<FlSpot> patientNumber = [];
-    patientNumber.add(FlSpot(-0.5, 0),);
+    patientNumber.add(FlSpot(-0.5, 50),);
 
     for(int i=0;i<12;i++){
       // print(DummyData.monthlyRequests.keys.indexed.elementAt(i).$2);

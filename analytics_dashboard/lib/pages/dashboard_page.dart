@@ -9,16 +9,6 @@ import 'package:analytics_dashboard/themes/para_sizes.dart';
 import 'package:analytics_dashboard/themes/para_text_styles.dart';
 import 'package:analytics_dashboard/widgets/para_page.dart';
 import 'package:flutter/material.dart';
-// import 'package:paracels/pages/widgets/occupancy_rate.dart';
-// import 'package:paracels/pages/widgets/para_calendar.dart';
-// import 'package:paracels/pages/widgets/para_timeline.dart';
-// import 'package:paracels/pages/widgets/user_age_chart.dart';
-// import 'package:paracels/pages/widgets/rate_of_use.dart';
-// import 'package:paracels/pages/widgets/stat_card.dart';
-// import 'package:paracels/themes/para_colors.dart';
-// import 'package:paracels/themes/para_sizes.dart';
-// import 'package:paracels/themes/para_text_styles.dart';
-// import 'package:paracels/widgets/para_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});

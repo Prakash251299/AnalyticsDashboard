@@ -1,9 +1,34 @@
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 // import 'package:paracels/models/room.dart';
 
 //In a true app, this would be in a repository to access to backend in all initState with fetch commands
 
 class DummyData {
+  static refreshData()async{
+    var db = FirebaseFirestore.instance;
+    // List<dynamic> topThreeGenres = getTopThreeGenres(topGenre);
+    await db
+    .collection("LinkifyData")
+    .doc("Linkify")
+    .set({
+      "new0to20":DummyData.new0to20,
+      "new20to100":DummyData.new20to100,
+      "new100andMore":DummyData.new100andMore,
+      "percentUsersMoreThan30Min":DummyData.percentUsersMoreThan30Min,
+      "percentUsersLessThan30min":DummyData.percentUsersLessThan30min,
+      "newUsers":DummyData.newUsers,
+      "allUsers":DummyData.allUsers,
+      "activeUsersWithTime":DummyData.activeUsersWithTime,
+      "usersCountStateWise":DummyData.usersCountStateWise,
+      "usersCountCountryWise":DummyData.usersCountCountryWise,
+      "monthlyRequests":DummyData.monthlyRequests,
+      "ageDistribution":DummyData.ageDistribution,
+    })
+    .onError((e, _) => print("Error writing user info in firebase: $e"));
+  }
   static Map<String,int> getCurrentDate() {
     DateTime now = DateTime.now();
     Map<String,int>m={"year":2025,"month":4,"day":29};
@@ -13,7 +38,7 @@ class DummyData {
   // DummyData d = DummyData();
   static Map<String,int>dateMap = DummyData.getCurrentDate();
   // dateMap["day"]!>
-  static final new10to20 = [
+  static final new0to20 = [
     DateTime(dateMap["year"]!, dateMap["day"]!>28?dateMap["month"]!:dateMap["month"]!-1, 28),
     DateTime(dateMap["year"]!, dateMap["day"]!>9?dateMap["month"]!:dateMap["month"]!-1, 9),
     DateTime(dateMap["year"]!, dateMap["day"]!>12?dateMap["month"]!:dateMap["month"]!-1, 12),
@@ -80,8 +105,8 @@ class DummyData {
   static Map<String,double> monthlyRequests = {
     "jan":200,
     "feb":230,
-    "mar":340,
-    "apr":150,
+    "mar":150,
+    "apr":340,
     "may":450,
     "jun":580,
     "jul":870,
@@ -98,80 +123,4 @@ class DummyData {
     "36_59":20,
     "60+":12,
   };
-
-
-  // static final Map<FloorLevel, List<Room>> floors = {
-  //   FloorLevel.level1: [
-  //     const Room(number: 1, state: RoomState.maintenance),
-  //     const Room(number: 2),
-  //     const Room(number: 3, state: RoomState.maintenance),
-  //     const Room(number: 4, state: RoomState.reserved),
-  //     const Room(number: 5),
-  //     const Room(number: 6, state: RoomState.maintenance),
-  //     const Room(number: 7, state: RoomState.reserved),
-  //     const Room(number: 8, state: RoomState.occupied),
-  //     const Room(number: 9),
-  //     const Room(number: 10, state: RoomState.occupied),
-  //     const Room(number: 11, state: RoomState.maintenance),
-  //     const Room(number: 12, state: RoomState.reserved),
-  //     const Room(number: 13, state: RoomState.occupied),
-  //     const Room(number: 14, state: RoomState.maintenance),
-  //     const Room(number: 15),
-  //     const Room(number: 16, state: RoomState.reserved),
-  //     const Room(number: 17, state: RoomState.maintenance),
-  //     const Room(number: 18, state: RoomState.occupied),
-  //     const Room(number: 19),
-  //     const Room(number: 20, state: RoomState.reserved),
-  //     const Room(number: 21, state: RoomState.maintenance),
-  //     const Room(number: 22),
-  //   ],
-  //   FloorLevel.level2: [
-  //     const Room(number: 1, state: RoomState.occupied),
-  //     const Room(number: 2, state: RoomState.reserved),
-  //     const Room(number: 3, state: RoomState.occupied),
-  //     const Room(number: 4),
-  //     const Room(number: 5, state: RoomState.occupied),
-  //     const Room(number: 6, state: RoomState.maintenance),
-  //     const Room(number: 7, state: RoomState.occupied),
-  //     const Room(number: 8, state: RoomState.maintenance),
-  //     const Room(number: 9, state: RoomState.occupied),
-  //     const Room(number: 10),
-  //     const Room(number: 11),
-  //     const Room(number: 12),
-  //     const Room(number: 13, state: RoomState.maintenance),
-  //     const Room(number: 14),
-  //     const Room(number: 15, state: RoomState.maintenance),
-  //     const Room(number: 16, state: RoomState.occupied),
-  //     const Room(number: 17),
-  //     const Room(number: 18, state: RoomState.occupied),
-  //     const Room(number: 19),
-  //     const Room(number: 20),
-  //     const Room(number: 21),
-  //     const Room(number: 22, state: RoomState.occupied),
-  //   ],
-  //   FloorLevel.level3: [
-  //     const Room(number: 1, state: RoomState.occupied),
-  //     const Room(number: 2, state: RoomState.occupied),
-  //     const Room(number: 3, state: RoomState.reserved),
-  //     const Room(number: 4, state: RoomState.occupied),
-  //     const Room(number: 5, state: RoomState.occupied),
-  //     const Room(number: 6, state: RoomState.occupied),
-  //     const Room(number: 7, state: RoomState.occupied),
-  //     const Room(number: 8, state: RoomState.maintenance),
-  //     const Room(number: 9, state: RoomState.maintenance),
-  //     const Room(number: 10, state: RoomState.maintenance),
-  //     const Room(number: 11, state: RoomState.occupied),
-  //     const Room(number: 12, state: RoomState.occupied),
-  //     const Room(number: 13),
-  //     const Room(number: 14),
-  //     const Room(number: 15),
-  //     const Room(number: 16, state: RoomState.occupied),
-  //     const Room(number: 17, state: RoomState.occupied),
-  //     const Room(number: 18),
-  //     const Room(number: 19),
-  //     const Room(number: 20, state: RoomState.reserved),
-  //     const Room(number: 21, state: RoomState.maintenance),
-  //     const Room(number: 22, state: RoomState.occupied),
-  //   ],
-  // }; // dummy data
 }

@@ -5,10 +5,6 @@ import 'package:analytics_dashboard/widgets/para_card.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-// import 'package:paracels/data/dummy_data.dart';
-// import 'package:paracels/themes/para_sizes.dart';
-// import 'package:paracels/themes/para_text_styles.dart';
-// import 'package:paracels/widgets/para_card.dart';
 
 class ChartSection {
   ChartSection({required this.color, required this.text, required this.percent});

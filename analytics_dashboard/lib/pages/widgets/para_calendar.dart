@@ -20,7 +20,7 @@ class ParaCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final new10to20 = DummyData.new10to20;
+    final new0to20 = DummyData.new0to20;
     final new20to100 = DummyData.new20to100;
     final new100andMore = DummyData.new100andMore;
     // DummyData d = DummyData();
@@ -51,16 +51,16 @@ class ParaCalendar extends StatelessWidget {
               disableModePicker: true,
               controlsTextStyle: ParaTextStyles.headline3,
               dayBuilder: ({required date, decoration, isDisabled, isSelected, isToday, textStyle}) {
-                final isnew10to20 = new10to20.contains(date);
+                final isnew0to20 = new0to20.contains(date);
                 final isnew20to100 = new20to100.contains(date);
                 final isnew100andMore = new100andMore.contains(date);
 
-                if (!isnew10to20 && !isnew20to100 && !isnew100andMore) {
+                if (!isnew0to20 && !isnew20to100 && !isnew100andMore) {
                   return null;
                 }
 
                 Color? pointColor() {
-                  if (isnew10to20) {
+                  if (isnew0to20) {
                     return workDayColor;
                   }
                   if (isnew20to100) {
@@ -119,7 +119,7 @@ class ParaCalendar extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      Expanded(child: Text('10-20', style: ParaTextStyles.body3)),
+                      Expanded(child: Text('0-20', style: ParaTextStyles.body3)),
                     ],
                   ),
                 ),
