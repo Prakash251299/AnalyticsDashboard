@@ -97,13 +97,14 @@ class LineChartSample4 extends StatelessWidget {
     Map<String,int> dateMap = DummyData.getCurrentDate();
     // print(month);
 
-    List<FlSpot> patientNumber = [];
-    patientNumber.add(FlSpot(-0.5, 50),);
+    List<FlSpot> rateOfUse = [];
+    rateOfUse.add(FlSpot(-0.5, 50),);
+    List<String> monthArray = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
 
     for(int i=0;i<12;i++){
       // print(DummyData.monthlyRequests.keys.indexed.elementAt(i).$2);
       if(i>=dateMap["month"]!){break;}
-      patientNumber.add(FlSpot(double.parse(i.toString()),DummyData.monthlyRequests[DummyData.monthlyRequests.keys.indexed.elementAt(i).$2]!=null?DummyData.monthlyRequests[DummyData.monthlyRequests.keys.indexed.elementAt(i).$2]!:0));
+      rateOfUse.add(FlSpot(double.parse(i.toString()),DummyData.monthlyRequests[monthArray[i]]!=null?DummyData.monthlyRequests[monthArray[i]]:0));
     }
     // patientNumber.add(FlSpot(12,0));
 
@@ -121,7 +122,7 @@ class LineChartSample4 extends StatelessWidget {
             lineTouchData: const LineTouchData(enabled: false),
             lineBarsData: [
               LineChartBarData(
-                spots: patientNumber,
+                spots: rateOfUse,
                 isCurved: true,
                 color: ParaColors.chart,
                 belowBarData: BarAreaData(

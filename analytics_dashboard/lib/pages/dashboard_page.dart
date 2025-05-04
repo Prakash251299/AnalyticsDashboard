@@ -1,3 +1,4 @@
+import 'package:analytics_dashboard/data/dummy_data.dart';
 import 'package:analytics_dashboard/pages/widgets/occupancy_rate.dart';
 import 'package:analytics_dashboard/pages/widgets/para_calendar.dart';
 import 'package:analytics_dashboard/pages/widgets/para_timeline.dart';
@@ -26,24 +27,24 @@ class DashboardPage extends StatelessWidget {
               style: ParaTextStyles.body1Secondary,
             ),
             const DashboardGap(),
-            const Row(
+            Row(
               children: [
                 StatCard(
                   value: '30 min+',
                   label: "Average users with more than 30 min",
-                  percentage: 2,
+                  percentage: DummyData.percentUsersMoreThan30Min,
                 ),
                 DashboardGap(),
                 StatCard(
                   value: '<30 min',
                   label: "Percentage users below 30 min",
-                  percentage: 10,
+                  percentage: DummyData.percentUsersLessThan30min,
                 ),
                 DashboardGap(),
                 StatCard(
                   value: 'New users',
                   label: 'New users account created',
-                  percentage: -7,
+                  percentage: DummyData.newUsers,
                 ),
                 DashboardGap(),
                 StatCard(

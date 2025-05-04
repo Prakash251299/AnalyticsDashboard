@@ -1,3 +1,4 @@
+import 'package:analytics_dashboard/data/dummy_data.dart';
 import 'package:analytics_dashboard/firebase_options.dart';
 import 'package:analytics_dashboard/pages/dashboard_page.dart';
 import 'package:analytics_dashboard/themes/para_colors.dart';
@@ -14,15 +15,15 @@ void main()async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const ProviderScope(
+    ProviderScope(
       child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  // MyApp({super.key});
+  DummyData d = DummyData();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +41,22 @@ class MyApp extends StatelessWidget {
           const Breakpoint(start: 801, end: 1920, name: DESKTOP),
           const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
-        child: const DashboardPage(),
+        child: FutureBuilder(
+          future: d.fetchAllData(),
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            // } else if (snapshot.hasError) {
+            //   return Center(child: Text('Error: ${snapshot.error}'));
+            } else if (snapshot.hasData) {
+              return DashboardPage();
+            } else {
+              d.refreshData();
+              return DashboardPage();
+              // return Center(child: Text('No data'));
+            }
+          }
+        )
       ),
     );
   }

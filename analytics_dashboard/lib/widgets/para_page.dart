@@ -1,4 +1,5 @@
 import 'package:analytics_dashboard/data/dummy_data.dart';
+import 'package:analytics_dashboard/data/fetch_data.dart';
 import 'package:analytics_dashboard/themes/para_colors.dart';
 import 'package:analytics_dashboard/themes/para_sizes.dart';
 import 'package:analytics_dashboard/themes/para_text_styles.dart';
@@ -23,7 +24,7 @@ class ParaPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          const NavigationDrawer(),
+          NavigationDrawer(),
           Expanded(
             child: Column(
               children: [
@@ -42,9 +43,10 @@ class ParaPage extends StatelessWidget {
 }
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({
+  NavigationDrawer({
     super.key,
   });
+  DummyData d = DummyData();
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +108,8 @@ class NavigationDrawer extends StatelessWidget {
                 Icons.refresh,
                 color: Colors.white,
               ),
-              onTap: () {
-                DummyData.refreshData();
+              onTap: () async{
+                await d.refreshData();
               },
               title: Text(
                 "Refresh",
