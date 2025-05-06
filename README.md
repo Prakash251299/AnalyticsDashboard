@@ -32,13 +32,14 @@ Clone the repository:
 `git clone https://github.com/Prakash251299/AnalyticsDashboard.git`  
 `cd AnalyticsDashboard`
 
-Build the project using:
-
-`flutter build apk --release`
 
 Run the application:
 
 `flutter run`
+
+Build the project using:
+
+`flutter build apk --release`
 ## Contributing
 Feel free to submit issues and pull requests to improve the project
 ## 🔗 Links
