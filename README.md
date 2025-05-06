@@ -9,7 +9,8 @@ A web application to visualize your app's analytics, providing insights into act
 ## Technologies used
 - Flutter
 - Dart - Primary programming language
-- Firestore (Firebase) - Real-time data
+- Firestore - Real-time data
+- Firebase - Deployment
 
 
 ## Screenshots
